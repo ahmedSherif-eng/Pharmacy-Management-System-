@@ -54,6 +54,7 @@ public class Reservation_Operations {
        public static ArrayList<Reservation_Model> Search_Reservation(int PH_ID)
     {   
        ArrayList<Reservation_Model> arr= new ArrayList();
+       arr=null;
         String Query="select * from reservation where pharmacist_ID ='"+PH_ID+"' ";
         ResultSet Res=DBOperation.getData(Query);
         try {
