@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Orders_Operations.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;loginform&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Control</a> &gt; <span class="el_source">Orders_Operations.java</span></div><h1>Orders_Operations.java</h1><pre class="source lang-java linenums">package Control;
+
+import Modeling.Customers_Model;
+import Modeling.DBOperation;
+import Modeling.Delivery_Model;
+import Modeling.Orders_Model;
+import Modeling.Pharmacist_Model;
+import Modeling.Products_Model;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Dell
+ */
+<span class="nc" id="L18">public class Orders_Operations {</span>
+        
+<span class="nc" id="L20">      public    ArrayList&lt;Pharmacist_Model&gt;  Pharmacist_arr= new ArrayList();</span>
+<span class="nc" id="L21">      public    ArrayList&lt;Customers_Model&gt;   Customers_arr= new ArrayList();</span>
+<span class="nc" id="L22">      public    ArrayList&lt;Products_Model&gt;    Products_arr= new ArrayList();</span>
+<span class="nc" id="L23">      public    ArrayList&lt;Orders_Model&gt;      order_arr= new ArrayList();</span>
+<span class="nc" id="L24">      public    ArrayList&lt;Delivery_Model&gt;    Delivery_arr= new ArrayList();</span>
+      
+
+   public  static void insert_OrderData(int price, String date,String Payment_Type,int delivery_ID)
+   {    
+<span class="nc" id="L29">       String query=&quot;insert into orders (order_price,date,Payment_Type,delivery_ID) values ('&quot;+price+&quot;' , '&quot;+date+&quot;' , '&quot;+Payment_Type+&quot;', '&quot;+delivery_ID+&quot;')&quot;;</span>
+<span class="nc" id="L30">       DBOperation.setDataOrDelete(query, &quot;&quot;);       </span>
+<span class="nc" id="L31">   }</span>
+      
+   public  static void insert_Order_Relation(int Pharmacist_ID , int Customer_ID,String ProductName, int Order_Number)
+   {    
+<span class="nc" id="L35">      String Query=&quot;insert into order_relation (Ph_ID,C_ID,ProductName,order_ID) values ('&quot;+Pharmacist_ID+&quot;' , '&quot;+Customer_ID+&quot;' , '&quot;+ProductName+&quot;', '&quot;+Order_Number+&quot;')&quot;;</span>
+<span class="nc" id="L36">      DBOperation.setDataOrDelete(Query, &quot;New order has been Inserted Successfully&quot;);      </span>
+<span class="nc" id="L37">   }</span>
+   
+      
+    public  boolean get_OrderData()
+    {
+<span class="nc" id="L42">String query = &quot;SELECT * &quot; +</span>
+               &quot;FROM pharmacist, customer, products, orders, order_relation, delivery &quot; +
+               &quot;WHERE (order_relation.Ph_ID = pharmacist.id) &quot; +
+               &quot;AND (order_relation.ProductName = products.med_name) &quot; +
+               &quot;AND (order_relation.order_ID = orders.order_number) &quot; +
+               &quot;AND (order_relation.C_ID = customer.customer_id) &quot; +
+               &quot;AND (orders.delivery_ID=delivery.delivery_ID )&quot; +
+               &quot;GROUP BY order_relation.order_ID&quot;;
+<span class="nc" id="L50">ResultSet Pr=DBOperation.getData(query);</span>
+
+        try {
+<span class="nc bnc" id="L53" title="All 2 branches missed.">            while(Pr.next())</span>
+            {
+<span class="nc" id="L55">                Pharmacist_arr.add(new Pharmacist_Model(Pr.getInt(&quot;id&quot;),Pr.getString(&quot;hired_date&quot;),Pr.getString(&quot;firstname&quot;),Pr.getString(&quot;lastname&quot;),Pr.getString(&quot;pharmacist_gender&quot;),Pr.getString(&quot;phonenumber&quot;),Pr.getString(&quot;email&quot;),Pr.getString(&quot;password&quot;),Pr.getInt(&quot;salary&quot;),Pr.getInt(&quot;age&quot;)));</span>
+<span class="nc" id="L56">                Customers_arr.add(new Customers_Model(Pr.getInt(&quot;customer_id&quot;),Pr.getString(&quot;customer_firstname&quot;),Pr.getString(&quot;customer_lastname&quot;),Pr.getString(&quot;city&quot;),Pr.getString(&quot;street&quot;),Pr.getString(&quot;gender&quot;),Pr.getString(&quot;phoneNumber_1&quot;)));</span>
+<span class="nc" id="L57">                Products_arr.add(new Products_Model(Pr.getString(&quot;med_name&quot;),Pr.getInt(&quot;price&quot;),Pr.getString(&quot;expired_date&quot;),Pr.getInt(&quot;quantity&quot;),Pr.getString(&quot;category&quot;),Pr.getString(&quot;description&quot;)));</span>
+<span class="nc" id="L58">                order_arr.add(new Orders_Model(Pr.getInt(&quot;order_number&quot;),Pr.getInt(&quot;order_price&quot;),Pr.getString(&quot;date&quot;),Pr.getString(&quot;Payment_Type&quot;)));                                </span>
+<span class="nc" id="L59">                Delivery_arr.add(new Delivery_Model(Pr.getString(&quot;name&quot;), Pr.getString(&quot;delivery_phoneNumber&quot;) , Pr.getInt(&quot;delivery_ID&quot;)));</span>
+            }
+            
+<span class="nc" id="L62">            return true;</span>
+<span class="nc" id="L63">        } catch (SQLException ex) {</span>
+<span class="nc" id="L64">          JOptionPane.showMessageDialog(null, ex, &quot;Message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+        }
+        finally{
+<span class="nc" id="L67">            try {</span>
+<span class="nc" id="L68">                Pr.close();</span>
+<span class="nc" id="L69">            } catch (SQLException ex) {</span>
+<span class="nc" id="L70">             JOptionPane.showMessageDialog(null, ex, &quot;Message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L71">            }</span>
+<span class="nc" id="L72">        }</span>
+<span class="nc" id="L73">       return false;</span>
+        
+    }
+
+    public static int Return_Order_Number(int price , String date, String Payment_Type)
+    {
+<span class="nc" id="L79">        int Order_ID=0;</span>
+<span class="nc" id="L80">        String Query=&quot;select * from orders where order_price='&quot;+price+&quot;'and date='&quot;+date+&quot;' and Payment_Type='&quot;+Payment_Type+&quot;' &quot;;</span>
+<span class="nc" id="L81">        ResultSet Pr=DBOperation.getData(Query);</span>
+        try {
+<span class="nc bnc" id="L83" title="All 2 branches missed.">            while(Pr.next())</span>
+            {
+<span class="nc" id="L85">             Order_ID= Pr.getInt(&quot;order_number&quot;);</span>
+            }       
+<span class="nc" id="L87">        } catch (SQLException ex) {</span>
+<span class="nc" id="L88">          JOptionPane.showMessageDialog(null, ex, &quot;Message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L89">         Order_ID=0;</span>
+<span class="nc" id="L90">        }</span>
+<span class="nc" id="L91">        return Order_ID;</span>
+    }
+    
+    public static  ArrayList&lt;Object&gt; Search_Order(int order_number)
+    {   
+<span class="nc" id="L96">        ArrayList&lt;Object&gt; obj=new ArrayList() ;</span>
+<span class="nc" id="L97">        String Query = &quot;SELECT * FROM pharmacist, customer, products, orders, order_relation WHERE order_relation.order_ID = '&quot;+order_number+&quot;' &quot; +</span>
+                &quot; AND (order_relation.ProductName = products.med_name) &quot; +
+                &quot;AND (order_relation.ProductName = products.med_name) &quot; +
+                &quot;AND (order_relation.order_ID = orders.order_number) &quot; +
+                &quot;AND (order_relation.C_ID = customer.customer_id) &quot; ;
+<span class="nc" id="L102">        ResultSet Pr=DBOperation.getData(Query);</span>
+        try {
+<span class="nc bnc" id="L104" title="All 2 branches missed.">            while(Pr.next())</span>
+            {
+<span class="nc" id="L106">                obj.add(new Pharmacist_Model(Pr.getInt(&quot;id&quot;),Pr.getString(&quot;hired_date&quot;),Pr.getString(&quot;firstname&quot;),Pr.getString(&quot;lastname&quot;),Pr.getString(&quot;pharmacist_gender&quot;),Pr.getString(&quot;phonenumber&quot;),Pr.getString(&quot;email&quot;),Pr.getString(&quot;password&quot;),Pr.getInt(&quot;salary&quot;),Pr.getInt(&quot;age&quot;)));</span>
+<span class="nc" id="L107">                obj.add(new Customers_Model(Pr.getInt(&quot;customer_id&quot;),Pr.getString(&quot;customer_firstname&quot;),Pr.getString(&quot;customer_lastname&quot;),Pr.getString(&quot;city&quot;),Pr.getString(&quot;street&quot;),Pr.getString(&quot;gender&quot;),Pr.getString(&quot;phoneNumber_1&quot;)));</span>
+<span class="nc" id="L108">                obj.add(new Products_Model(Pr.getString(&quot;med_name&quot;),Pr.getInt(&quot;price&quot;),Pr.getString(&quot;expired_date&quot;),Pr.getInt(&quot;quantity&quot;),Pr.getString(&quot;category&quot;),Pr.getString(&quot;description&quot;)));</span>
+<span class="nc" id="L109">                obj.add(new Orders_Model(Pr.getInt(&quot;order_number&quot;),Pr.getInt(&quot;order_price&quot;),Pr.getString(&quot;date&quot;),Pr.getString(&quot;Payment_Type&quot;)));                                </span>
+            }       
+<span class="nc" id="L111">        } catch (SQLException ex) {</span>
+<span class="nc" id="L112">          JOptionPane.showMessageDialog(null, ex, &quot;Message&quot;, JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L113">         obj=null;</span>
+<span class="nc" id="L114">        }</span>
+<span class="nc" id="L115">         return obj;    </span>
+    }
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Signup.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;loginform&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">loginform</a> &gt; <span class="el_source">Signup.java</span></div><h1>Signup.java</h1><pre class="source lang-java linenums">package loginform;
+
+import Control.Pharmacist_operations;
+import Modeling.Pharmacist_Model;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Seifeldin Ahmed
+ */
+public class Signup extends javax.swing.JFrame {
+
+    /**
+     * Creates new form Signup
+     */
+<span class="nc" id="L16">    public String emailPattern = &quot;^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$&quot;;</span>
+<span class="nc" id="L17">    public String mobileNumberPattern = &quot;^01[0125][0-9]{8}$&quot;;</span>
+
+<span class="nc" id="L19">    public Signup() {</span>
+<span class="nc" id="L20">        initComponents();</span>
+<span class="nc" id="L21">        Add.setEnabled(false);</span>
+<span class="nc" id="L22">    }</span>
+        public boolean validateFields() {
+        
+<span class="nc" id="L25">        String ID = ph_id.getText();</span>
+<span class="nc" id="L26">        String firstname = txtName1.getText();</span>
+<span class="nc" id="L27">        String lastname = txtName2.getText();</span>
+<span class="nc" id="L28">        String email = txtEmail.getText();</span>
+<span class="nc" id="L29">        String phonenumber = txtphone.getText();</span>
+<span class="nc" id="L30">        String Password = txtpass.getText();</span>
+<span class="nc" id="L31">        String salary= txtsalary.getText();</span>
+<span class="nc bnc" id="L32" title="All 14 branches missed.">        return !ID.equals(&quot;&quot;) &amp;&amp; email.matches(emailPattern) &amp;&amp; !firstname.equals(&quot;&quot;) &amp;&amp; !lastname.equals(&quot;&quot;) &amp;&amp; phonenumber.matches(mobileNumberPattern) &amp;&amp; !Password.equals(&quot;&quot;) &amp;&amp; !salary.equals(&quot;&quot;);</span>
+    
+    }
+        public boolean password_vaildate()
+        {
+<span class="nc" id="L37">           String Password = txtpass.getText();</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">           return Password.length()&gt;=6;</span>
+        }
+   
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L45">        back = new javax.swing.JLabel();</span>
+<span class="nc" id="L46">        jPanel2 = new javax.swing.JPanel();</span>
+<span class="nc" id="L47">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L48">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L49">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L50">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        jLabel6 = new javax.swing.JLabel();</span>
+<span class="nc" id="L52">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L53">        txtName1 = new javax.swing.JTextField();</span>
+<span class="nc" id="L54">        txtName2 = new javax.swing.JTextField();</span>
+<span class="nc" id="L55">        txtEmail = new javax.swing.JTextField();</span>
+<span class="nc" id="L56">        txtsalary = new javax.swing.JTextField();</span>
+<span class="nc" id="L57">        Add = new button.mybutton();</span>
+<span class="nc" id="L58">        gender = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L59">        txtphone = new javax.swing.JTextField();</span>
+<span class="nc" id="L60">        jLabel9 = new javax.swing.JLabel();</span>
+<span class="nc" id="L61">        jLabel10 = new javax.swing.JLabel();</span>
+<span class="nc" id="L62">        txtpass = new javax.swing.JPasswordField();</span>
+<span class="nc" id="L63">        txtAge = new javax.swing.JTextField();</span>
+<span class="nc" id="L64">        jLabel11 = new javax.swing.JLabel();</span>
+<span class="nc" id="L65">        ph_id = new javax.swing.JTextField();</span>
+<span class="nc" id="L66">        jLabel5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L67">        jLabel8 = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L69">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L70">        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
+
+<span class="nc" id="L72">        back.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icon/back-button.png&quot;))); // NOI18N</span>
+<span class="nc" id="L73">        back.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L75">                backMouseClicked(evt);</span>
+<span class="nc" id="L76">            }</span>
+        });
+<span class="nc" id="L78">        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));</span>
+
+<span class="nc" id="L80">        jPanel2.setBackground(new java.awt.Color(6, 107, 138,80));</span>
+<span class="nc" id="L81">        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, &quot;Add New Pharmacist&quot;, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font(&quot;Tahoma&quot;, 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N</span>
+<span class="nc" id="L82">        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
+
+<span class="nc" id="L84">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icon/Untitled-1 (2).png&quot;))); // NOI18N</span>
+<span class="nc" id="L85">        jLabel1.setText(&quot;jLabel1&quot;);</span>
+<span class="nc" id="L86">        jLabel1.setPreferredSize(new java.awt.Dimension(122, 115));</span>
+<span class="nc" id="L87">        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 122, -1, 127));</span>
+
+<span class="nc" id="L89">        jLabel2.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L90">        jLabel2.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L91">        jLabel2.setText(&quot;First Name&quot;);</span>
+<span class="nc" id="L92">        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));</span>
+
+<span class="nc" id="L94">        jLabel3.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L95">        jLabel3.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L96">        jLabel3.setText(&quot;Last name&quot;);</span>
+<span class="nc" id="L97">        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));</span>
+
+<span class="nc" id="L99">        jLabel4.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L100">        jLabel4.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L101">        jLabel4.setText(&quot;E-mail&quot;);</span>
+<span class="nc" id="L102">        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));</span>
+
+<span class="nc" id="L104">        jLabel6.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L105">        jLabel6.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L106">        jLabel6.setText(&quot;Password&quot;);</span>
+<span class="nc" id="L107">        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));</span>
+
+<span class="nc" id="L109">        jLabel7.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L110">        jLabel7.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L111">        jLabel7.setText(&quot;Gender&quot;);</span>
+<span class="nc" id="L112">        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, -1, -1));</span>
+
+<span class="nc" id="L114">        txtName1.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L116">                txtName1ActionPerformed(evt);</span>
+<span class="nc" id="L117">            }</span>
+        });
+<span class="nc" id="L119">        txtName1.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L121">                txtName1KeyReleased(evt);</span>
+<span class="nc" id="L122">            }</span>
+        });
+<span class="nc" id="L124">        jPanel2.add(txtName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 139, -1));</span>
+
+<span class="nc" id="L126">        txtName2.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L128">                txtName2ActionPerformed(evt);</span>
+<span class="nc" id="L129">            }</span>
+        });
+<span class="nc" id="L131">        txtName2.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L133">                txtName2KeyReleased(evt);</span>
+<span class="nc" id="L134">            }</span>
+        });
+<span class="nc" id="L136">        jPanel2.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 139, -1));</span>
+
+<span class="nc" id="L138">        txtEmail.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L140">                txtEmailActionPerformed(evt);</span>
+<span class="nc" id="L141">            }</span>
+        });
+<span class="nc" id="L143">        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L145">                txtEmailKeyReleased(evt);</span>
+<span class="nc" id="L146">            }</span>
+        });
+<span class="nc" id="L148">        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 139, -1));</span>
+
+<span class="nc" id="L150">        txtsalary.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L152">                txtsalaryActionPerformed(evt);</span>
+<span class="nc" id="L153">            }</span>
+        });
+<span class="nc" id="L155">        txtsalary.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L157">                txtsalaryKeyReleased(evt);</span>
+<span class="nc" id="L158">            }</span>
+        });
+<span class="nc" id="L160">        jPanel2.add(txtsalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 139, -1));</span>
+
+<span class="nc" id="L162">        Add.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L163">        Add.setForeground(new java.awt.Color(6, 107, 138));</span>
+<span class="nc" id="L164">        Add.setText(&quot;Register&quot;);</span>
+<span class="nc" id="L165">        Add.setBorderColor(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L166">        Add.setBorderPainted(false);</span>
+<span class="nc" id="L167">        Add.setColorClick(new java.awt.Color(153, 204, 255));</span>
+<span class="nc" id="L168">        Add.setColorOver(new java.awt.Color(204, 204, 204));</span>
+<span class="nc" id="L169">        Add.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L170">        Add.setRadius(10);</span>
+<span class="nc" id="L171">        Add.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L173">                AddMouseClicked(evt);</span>
+<span class="nc" id="L174">            }</span>
+        });
+<span class="nc" id="L176">        Add.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L178">                AddActionPerformed(evt);</span>
+<span class="nc" id="L179">            }</span>
+        });
+<span class="nc" id="L181">        jPanel2.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 83, 41));</span>
+
+<span class="nc" id="L183">        gender.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Male&quot;, &quot;Female&quot; }));</span>
+<span class="nc" id="L184">        gender.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L186">                genderActionPerformed(evt);</span>
+<span class="nc" id="L187">            }</span>
+        });
+<span class="nc" id="L189">        jPanel2.add(gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));</span>
+
+<span class="nc" id="L191">        txtphone.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L193">                txtphoneActionPerformed(evt);</span>
+<span class="nc" id="L194">            }</span>
+        });
+<span class="nc" id="L196">        jPanel2.add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 139, -1));</span>
+
+<span class="nc" id="L198">        jLabel9.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L199">        jLabel9.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L200">        jLabel9.setText(&quot;Age&quot;);</span>
+<span class="nc" id="L201">        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));</span>
+
+<span class="nc" id="L203">        jLabel10.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L204">        jLabel10.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L205">        jLabel10.setText(&quot;Phone Number&quot;);</span>
+<span class="nc" id="L206">        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));</span>
+
+<span class="nc" id="L208">        txtpass.setToolTipText(&quot;enter at least 6 digits&quot;);</span>
+<span class="nc" id="L209">        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 140, -1));</span>
+
+<span class="nc" id="L211">        txtAge.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L213">                txtAgeActionPerformed(evt);</span>
+<span class="nc" id="L214">            }</span>
+        });
+<span class="nc" id="L216">        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L218">                txtAgeKeyReleased(evt);</span>
+<span class="nc" id="L219">            }</span>
+        });
+<span class="nc" id="L221">        jPanel2.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 139, -1));</span>
+
+<span class="nc" id="L223">        jLabel11.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L224">        jLabel11.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L225">        jLabel11.setText(&quot;Salary&quot;);</span>
+<span class="nc" id="L226">        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));</span>
+
+<span class="nc" id="L228">        ph_id.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L230">                ph_idActionPerformed(evt);</span>
+<span class="nc" id="L231">            }</span>
+        });
+<span class="nc" id="L233">        ph_id.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L235">                ph_idKeyReleased(evt);</span>
+<span class="nc" id="L236">            }</span>
+        });
+<span class="nc" id="L238">        jPanel2.add(ph_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 139, -1));</span>
+
+<span class="nc" id="L240">        jLabel5.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L241">        jLabel5.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L242">        jLabel5.setText(&quot;Pharmacist ID&quot;);</span>
+<span class="nc" id="L243">        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));</span>
+
+<span class="nc" id="L245">        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 510, 420));</span>
+
+<span class="nc" id="L247">        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icon/17973908.jpg&quot;))); // NOI18N</span>
+<span class="nc" id="L248">        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, 590));</span>
+
+<span class="nc" id="L250">        pack();</span>
+<span class="nc" id="L251">        setLocationRelativeTo(null);</span>
+<span class="nc" id="L252">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+<span class="nc" id="L255">        pharmacist gg =new pharmacist();</span>
+<span class="nc" id="L256">        this.dispose();</span>
+<span class="nc" id="L257">        gg.setVisible(true);</span>
+
+<span class="nc" id="L259">    }//GEN-LAST:event_backMouseClicked</span>
+
+    private void txtName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName1ActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L263">    }//GEN-LAST:event_txtName1ActionPerformed</span>
+
+    private void txtName1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtName1KeyReleased
+        // TODO add your handling code here:
+<span class="nc" id="L267">    }//GEN-LAST:event_txtName1KeyReleased</span>
+
+    private void txtName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName2ActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L271">    }//GEN-LAST:event_txtName2ActionPerformed</span>
+
+    private void txtName2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtName2KeyReleased
+        // TODO add your handling code here:
+<span class="nc" id="L275">    }//GEN-LAST:event_txtName2KeyReleased</span>
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L279">    }//GEN-LAST:event_txtEmailActionPerformed</span>
+
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+        // TODO add your handling code here:
+<span class="nc" id="L283">    }//GEN-LAST:event_txtEmailKeyReleased</span>
+
+    private void txtsalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsalaryActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L287">    }//GEN-LAST:event_txtsalaryActionPerformed</span>
+
+    private void txtsalaryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsalaryKeyReleased
+        // TODO add your handling code here:
+<span class="nc" id="L291">    }//GEN-LAST:event_txtsalaryKeyReleased</span>
+
+    private void AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseClicked
+<span class="nc bnc" id="L294" title="All 2 branches missed.">        if (validateFields()) {</span>
+<span class="nc bnc" id="L295" title="All 2 branches missed.">            if(password_vaildate())</span>
+            {   
+<span class="nc" id="L297">                Pharmacist_Model pharmacist_obj = Pharmacist_operations.Search_Pharmacist(Integer.parseInt(ph_id.getText()));</span>
+<span class="nc bnc" id="L298" title="All 2 branches missed.">                if(pharmacist_obj == null)</span>
+                {   
+<span class="nc" id="L300">                    Pharmacist_operations.insert_pharmacistData(Integer.parseInt(ph_id.getText()),txtName1.getText(), txtName2.getText(), (String)gender.getSelectedItem(), txtphone.getText(), txtEmail.getText(), txtpass.getText(), Integer.parseInt(txtsalary.getText().trim()),Integer.parseInt(txtAge.getText().trim()));</span>
+<span class="nc" id="L301">                    pharmacist obj = new pharmacist();</span>
+<span class="nc" id="L302">                    obj.setVisible(true);</span>
+<span class="nc" id="L303">                    obj.show_table();</span>
+<span class="nc" id="L304">                    this.dispose();</span>
+<span class="nc" id="L305">                }</span>
+                else
+                {
+<span class="nc" id="L308">                    JOptionPane.showMessageDialog(null, &quot;There is a Pharmacist with This ID&quot;,&quot;Message&quot;, JOptionPane.WARNING_MESSAGE);</span>
+
+                }
+<span class="nc" id="L311">            }</span>
+            else {
+<span class="nc" id="L313">            JOptionPane.showMessageDialog(null, &quot;Password Is Weak&quot;,&quot;Message&quot;, JOptionPane.WARNING_MESSAGE);</span>
+        }
+        } else {
+<span class="nc" id="L316">            JOptionPane.showMessageDialog(null, &quot;Please Enter Correct information&quot;,&quot;Message&quot;, JOptionPane.WARNING_MESSAGE);</span>
+        }
+
+<span class="nc" id="L319">    }//GEN-LAST:event_AddMouseClicked</span>
+
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L323">    }//GEN-LAST:event_AddActionPerformed</span>
+
+    private void genderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L327">    }//GEN-LAST:event_genderActionPerformed</span>
+
+    private void txtphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtphoneActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L331">    }//GEN-LAST:event_txtphoneActionPerformed</span>
+
+    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L335">    }//GEN-LAST:event_txtAgeActionPerformed</span>
+
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
+        // TODO add your handling code here:
+<span class="nc" id="L339">    }//GEN-LAST:event_txtAgeKeyReleased</span>
+
+    private void ph_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ph_idActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L343">    }//GEN-LAST:event_ph_idActionPerformed</span>
+
+    private void ph_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ph_idKeyReleased
+        // TODO add your handling code here:
+<span class="nc" id="L347">    }//GEN-LAST:event_ph_idKeyReleased</span>
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+<span class="nc bnc" id="L359" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L360" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L361">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L362">                    break;</span>
+                }
+            }
+<span class="nc" id="L365">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L366">            java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L367">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L368">            java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L369">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L370">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L371">            java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L372">        }</span>
+        //&lt;/editor-fold&gt;
+
+        /* Create and display the form */
+<span class="nc" id="L376">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
+            public void run() {
+<span class="nc" id="L378">                new Signup().setVisible(true);</span>
+<span class="nc" id="L379">            }</span>
+        });
+<span class="nc" id="L381">    }</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private button.mybutton Add;
+    private javax.swing.JLabel back;
+    private javax.swing.JComboBox&lt;String&gt; gender;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField ph_id;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtName1;
+    private javax.swing.JTextField txtName2;
+    private javax.swing.JPasswordField txtpass;
+    private javax.swing.JTextField txtphone;
+    private javax.swing.JTextField txtsalary;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

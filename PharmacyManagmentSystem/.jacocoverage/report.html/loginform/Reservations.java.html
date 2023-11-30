@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Reservations.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;loginform&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">loginform</a> &gt; <span class="el_source">Reservations.java</span></div><h1>Reservations.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package loginform;
+
+import Control.Reservation_Operations;
+import Control.customers_operations;
+import Modeling.Customers_Model;
+import Modeling.Reservation_Model;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Ahmed Sherif
+ */
+public class Reservations extends javax.swing.JFrame {
+
+    /**
+     * Creates new form Reservations
+     */
+    private ArrayList&lt;Reservation_Model&gt; arr;
+<span class="nc" id="L27">    private int row_number = 0;</span>
+<span class="nc" id="L28">    public Reservations() {</span>
+<span class="nc" id="L29">        initComponents();</span>
+<span class="nc" id="L30">        tableDark1.fixTable(jScrollPane1);</span>
+<span class="nc" id="L31">        tableDark1.setColumnAlignment(0, JLabel.CENTER);</span>
+<span class="nc" id="L32">        tableDark1.setCellAlignment(0, JLabel.CENTER);</span>
+<span class="nc" id="L33">        tableDark1.setColumnAlignment(1, JLabel.CENTER);</span>
+<span class="nc" id="L34">        tableDark1.setCellAlignment(1, JLabel.CENTER);</span>
+<span class="nc" id="L35">    }</span>
+    public void show_table() {
+<span class="nc" id="L37">        DefaultTableModel mm = (DefaultTableModel) tableDark1.getModel();</span>
+<span class="nc" id="L38">        arr = Reservation_Operations.get_ReservationData();</span>
+<span class="nc" id="L39">        Object[] row = new Object[5];</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">         for (int i = 0; i &lt; arr.size(); i++) {</span>
+<span class="nc" id="L41">            row[0] = arr.get(i).getPH_ID(); </span>
+<span class="nc" id="L42">            row[1] = arr.get(i).getCU_ID();</span>
+<span class="nc" id="L43">            row[2] = arr.get(i).getProduct_Name();</span>
+<span class="nc" id="L44">            row[3] = arr.get(i).getQuantity();</span>
+<span class="nc" id="L45">            row[4] = arr.get(i).getDate();</span>
+            
+<span class="nc" id="L47">            mm.insertRow(i, row);</span>
+          
+        }
+    
+        // Mouse Event
+<span class="nc" id="L52">        tableDark1.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L55">                row_number = tableDark1.getSelectedRow();</span>
+<span class="nc" id="L56">            }</span>
+        }
+       );
+<span class="nc" id="L59"> }</span>
+         public void show_table(ArrayList&lt;Reservation_Model&gt; arr) {
+<span class="nc" id="L61">        DefaultTableModel mm = (DefaultTableModel) tableDark1.getModel();</span>
+<span class="nc" id="L62">        Object[] row = new Object[5];</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">         for (int i = 0; i &lt; arr.size(); i++) {</span>
+<span class="nc" id="L64">            row[0] = arr.get(i).getPH_ID(); </span>
+<span class="nc" id="L65">            row[1] = arr.get(i).getCU_ID();</span>
+<span class="nc" id="L66">            row[2] = arr.get(i).getProduct_Name();</span>
+<span class="nc" id="L67">            row[3] = arr.get(i).getQuantity();</span>
+<span class="nc" id="L68">            row[4] = arr.get(i).getDate();</span>
+<span class="nc" id="L69">            mm.insertRow(i, row);</span>
+          
+        }
+<span class="nc" id="L72">                tableDark1.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L75">                row_number = tableDark1.getSelectedRow();</span>
+<span class="nc" id="L76">            }</span>
+        }
+       );
+<span class="nc" id="L79"> }</span>
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L89">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="nc" id="L90">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L91">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L92">        tableDark1 = new tabledark.TableDark();</span>
+<span class="nc" id="L93">        txtSearch = new javax.swing.JTextField();</span>
+<span class="nc" id="L94">        addButton = new button.mybutton();</span>
+<span class="nc" id="L95">        searchButton = new button.mybutton();</span>
+<span class="nc" id="L96">        deleteButton = new button.mybutton();</span>
+<span class="nc" id="L97">        editButton = new button.mybutton();</span>
+<span class="nc" id="L98">        jLabel6 = new javax.swing.JLabel();</span>
+<span class="nc" id="L99">        jTextField2 = new javax.swing.JTextField();</span>
+
+<span class="nc" id="L101">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L103">        jPanel1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L104">        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
+
+<span class="nc" id="L106">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icon/back-button.png&quot;))); // NOI18N</span>
+<span class="nc" id="L107">        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L109">                jLabel1MouseClicked(evt);</span>
+<span class="nc" id="L110">            }</span>
+        });
+<span class="nc" id="L112">        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));</span>
+
+<span class="nc" id="L114">        tableDark1.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                &quot;Pharmacist&quot;, &quot;Customer&quot;, &quot;Product&quot;, &quot;Quantity&quot;, &quot;Date&quot;
+            }
+        ));
+<span class="nc" id="L127">        jScrollPane1.setViewportView(tableDark1);</span>
+
+<span class="nc" id="L129">        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 680, 220));</span>
+
+<span class="nc" id="L131">        txtSearch.setText(&quot;Pharmacist id&quot;);</span>
+<span class="nc" id="L132">        txtSearch.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L134">                txtSearchActionPerformed(evt);</span>
+<span class="nc" id="L135">            }</span>
+        });
+<span class="nc" id="L137">        jPanel1.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 150, 30));</span>
+
+<span class="nc" id="L139">        addButton.setBackground(new java.awt.Color(6, 107, 138));</span>
+<span class="nc" id="L140">        addButton.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L141">        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icon/add-user.png&quot;))); // NOI18N</span>
+<span class="nc" id="L142">        addButton.setText(&quot;Add&quot;);</span>
+<span class="nc" id="L143">        addButton.setBorderColor(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L144">        addButton.setColorClick(new java.awt.Color(0, 153, 153));</span>
+<span class="nc" id="L145">        addButton.setMaximumSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L146">        addButton.setMinimumSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L147">        addButton.setPreferredSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L148">        addButton.setRadius(10);</span>
+<span class="nc" id="L149">        addButton.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L151">                addButtonMouseClicked(evt);</span>
+<span class="nc" id="L152">            }</span>
+        });
+<span class="nc" id="L154">        addButton.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L156">                addButtonActionPerformed(evt);</span>
+<span class="nc" id="L157">            }</span>
+        });
+<span class="nc" id="L159">        addButton.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L161">                addButtonKeyPressed(evt);</span>
+<span class="nc" id="L162">            }</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L164">                addButtonKeyReleased(evt);</span>
+<span class="nc" id="L165">            }</span>
+        });
+<span class="nc" id="L167">        jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 80, 30));</span>
+
+<span class="nc" id="L169">        searchButton.setBackground(new java.awt.Color(6, 107, 138));</span>
+<span class="nc" id="L170">        searchButton.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L171">        searchButton.setText(&quot;Search&quot;);</span>
+<span class="nc" id="L172">        searchButton.setBorderColor(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L173">        searchButton.setColorClick(new java.awt.Color(0, 153, 153));</span>
+<span class="nc" id="L174">        searchButton.setMaximumSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L175">        searchButton.setMinimumSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L176">        searchButton.setPreferredSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L177">        searchButton.setRadius(10);</span>
+<span class="nc" id="L178">        searchButton.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L180">                searchButtonActionPerformed(evt);</span>
+<span class="nc" id="L181">            }</span>
+        });
+<span class="nc" id="L183">        jPanel1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 80, 30));</span>
+
+<span class="nc" id="L185">        deleteButton.setBackground(new java.awt.Color(6, 107, 138));</span>
+<span class="nc" id="L186">        deleteButton.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L187">        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icon/x (2).png&quot;))); // NOI18N</span>
+<span class="nc" id="L188">        deleteButton.setText(&quot;Delete&quot;);</span>
+<span class="nc" id="L189">        deleteButton.setBorderColor(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L190">        deleteButton.setColorClick(new java.awt.Color(0, 153, 153));</span>
+<span class="nc" id="L191">        deleteButton.setMaximumSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L192">        deleteButton.setMinimumSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L193">        deleteButton.setPreferredSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L194">        deleteButton.setRadius(10);</span>
+<span class="nc" id="L195">        deleteButton.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L197">                deleteButtonActionPerformed(evt);</span>
+<span class="nc" id="L198">            }</span>
+        });
+<span class="nc" id="L200">        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 90, 30));</span>
+
+<span class="nc" id="L202">        editButton.setBackground(new java.awt.Color(6, 107, 138));</span>
+<span class="nc" id="L203">        editButton.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L204">        editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icon/edit.png&quot;))); // NOI18N</span>
+<span class="nc" id="L205">        editButton.setText(&quot;Edit&quot;);</span>
+<span class="nc" id="L206">        editButton.setBorderColor(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L207">        editButton.setColorClick(new java.awt.Color(0, 153, 153));</span>
+<span class="nc" id="L208">        editButton.setMaximumSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L209">        editButton.setMinimumSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L210">        editButton.setPreferredSize(new java.awt.Dimension(75, 25));</span>
+<span class="nc" id="L211">        editButton.setRadius(10);</span>
+<span class="nc" id="L212">        editButton.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L214">                editButtonMouseClicked(evt);</span>
+<span class="nc" id="L215">            }</span>
+        });
+<span class="nc" id="L217">        editButton.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L219">                editButtonActionPerformed(evt);</span>
+<span class="nc" id="L220">            }</span>
+        });
+<span class="nc" id="L222">        jPanel1.add(editButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 90, 30));</span>
+
+<span class="nc" id="L224">        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/icon/booking.png&quot;))); // NOI18N</span>
+<span class="nc" id="L225">        jLabel6.setInheritsPopupMenu(false);</span>
+<span class="nc" id="L226">        jLabel6.setMaximumSize(new java.awt.Dimension(40, 40));</span>
+<span class="nc" id="L227">        jLabel6.setRequestFocusEnabled(false);</span>
+<span class="nc" id="L228">        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));</span>
+
+<span class="nc" id="L230">        jTextField2.setEditable(false);</span>
+<span class="nc" id="L231">        jTextField2.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L232">        jTextField2.setForeground(new java.awt.Color(6, 107, 138));</span>
+<span class="nc" id="L233">        jTextField2.setText(&quot;Reservation&quot;);</span>
+<span class="nc" id="L234">        jTextField2.setBorder(null);</span>
+<span class="nc" id="L235">        jTextField2.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L237">                jTextField2ActionPerformed(evt);</span>
+<span class="nc" id="L238">            }</span>
+        });
+<span class="nc" id="L240">        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));</span>
+
+<span class="nc" id="L242">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L243">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L244">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L245">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L246">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L247">                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L248">                .addGap(0, 0, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L250">        layout.setVerticalGroup(</span>
+<span class="nc" id="L251">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L252">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L255">        pack();</span>
+<span class="nc" id="L256">        setLocationRelativeTo(null);</span>
+<span class="nc" id="L257">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L261">    }//GEN-LAST:event_txtSearchActionPerformed</span>
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+<span class="nc bnc" id="L264" title="All 2 branches missed.">        if (login.Manager) {</span>
+<span class="nc" id="L265">            rond obj = new rond();</span>
+<span class="nc" id="L266">            obj.setVisible(true);</span>
+<span class="nc" id="L267">            this.dispose();</span>
+<span class="nc" id="L268">        } else {</span>
+<span class="nc" id="L269">            phar_rond obj = new phar_rond();</span>
+<span class="nc" id="L270">            obj.setVisible(true);</span>
+<span class="nc" id="L271">            this.dispose();</span>
+        }
+        // TODO add your handling code here:
+<span class="nc" id="L274">    }//GEN-LAST:event_jLabel1MouseClicked</span>
+
+    private void addButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addButtonKeyPressed
+
+<span class="nc" id="L278">    }//GEN-LAST:event_addButtonKeyPressed</span>
+
+    private void addButtonKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addButtonKeyReleased
+        // TODO add your handling code here:
+<span class="nc" id="L282">    }//GEN-LAST:event_addButtonKeyReleased</span>
+
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+<span class="nc" id="L285">        reservationAdd obj = new reservationAdd();</span>
+<span class="nc" id="L286">        obj.setVisible(true);</span>
+<span class="nc" id="L287">        this.dispose();         // TODO add your handling code here:</span>
+<span class="nc" id="L288">    }//GEN-LAST:event_addButtonMouseClicked</span>
+
+    private void editButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editButtonMouseClicked
+<span class="nc" id="L291">        reservationEdit obj = new reservationEdit(arr.get(row_number).getPH_ID(),arr.get(row_number).getCU_ID(),arr.get(row_number).getProduct_Name());</span>
+<span class="nc" id="L292">        obj.setVisible(true);</span>
+<span class="nc" id="L293">        this.dispose();</span>
+<span class="nc" id="L294">    }//GEN-LAST:event_editButtonMouseClicked</span>
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+<span class="nc bnc" id="L297" title="All 2 branches missed.">       if (txtSearch.getText().isEmpty()) {</span>
+        } else {
+<span class="nc" id="L299">            ArrayList&lt;Reservation_Model&gt; obj = Reservation_Operations.Search_Reservation(Integer.parseInt(txtSearch.getText()));</span>
+
+<span class="nc bnc" id="L301" title="All 2 branches missed.">            if (obj != null) {</span>
+<span class="nc" id="L302">               this.dispose();</span>
+<span class="nc" id="L303">                Reservations gg = new Reservations();</span>
+<span class="nc" id="L304">                gg.show_table(obj);</span>
+<span class="nc" id="L305">                gg.setVisible(true);</span>
+<span class="nc" id="L306">            } else {</span>
+<span class="nc" id="L307">                JOptionPane.showMessageDialog(null, &quot;ID Not Found&quot;, &quot;Message&quot;, JOptionPane.WARNING_MESSAGE);</span>
+
+            }
+        } 
+<span class="nc" id="L311">    }//GEN-LAST:event_searchButtonActionPerformed</span>
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+<span class="nc" id="L314">      int PH_id = arr.get(row_number).getPH_ID();</span>
+<span class="nc" id="L315">       int CU_ID =arr.get(row_number).getCU_ID();</span>
+<span class="nc" id="L316">       String productName=arr.get(row_number).getProduct_Name();</span>
+<span class="nc" id="L317">        Reservation_Operations.Delete_Reservation(PH_id, CU_ID, productName);</span>
+<span class="nc" id="L318">        this.dispose(); </span>
+<span class="nc" id="L319">        Reservations gg = new Reservations();</span>
+<span class="nc" id="L320">        gg.show_table();</span>
+<span class="nc" id="L321">        gg.setVisible(true);</span>
+<span class="nc" id="L322">        JOptionPane.showMessageDialog(null, &quot;reservation has been Deleted Successfully&quot;, &quot;Message&quot;, JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L323">    }//GEN-LAST:event_deleteButtonActionPerformed</span>
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L327">    }//GEN-LAST:event_editButtonActionPerformed</span>
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L331">    }//GEN-LAST:event_jTextField2ActionPerformed</span>
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L335">    }//GEN-LAST:event_addButtonActionPerformed</span>
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+<span class="nc bnc" id="L347" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L348" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L349">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L350">                    break;</span>
+                }
+            }
+<span class="nc" id="L353">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L354">            java.util.logging.Logger.getLogger(Reservations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L355">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L356">            java.util.logging.Logger.getLogger(Reservations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L357">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L358">            java.util.logging.Logger.getLogger(Reservations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L359">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L360">            java.util.logging.Logger.getLogger(Reservations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L361">        }</span>
+        //&lt;/editor-fold&gt;
+
+        /* Create and display the form */
+<span class="nc" id="L365">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
+            public void run() {
+<span class="nc" id="L367">                new Reservations().setVisible(true);</span>
+<span class="nc" id="L368">            }</span>
+        });
+<span class="nc" id="L370">    }</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private button.mybutton addButton;
+    private button.mybutton deleteButton;
+    private button.mybutton editButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField2;
+    private button.mybutton searchButton;
+    private tabledark.TableDark tableDark1;
+    private javax.swing.JTextField txtSearch;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

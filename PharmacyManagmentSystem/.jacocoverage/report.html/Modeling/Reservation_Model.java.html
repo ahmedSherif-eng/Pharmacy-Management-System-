@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Reservation_Model.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;loginform&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Modeling</a> &gt; <span class="el_source">Reservation_Model.java</span></div><h1>Reservation_Model.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Modeling;
+
+/**
+ *
+ * @author Ahmed Sherif
+ */
+public class Reservation_Model {
+    private int PH_ID,CU_ID,quantity;
+    private String Product_Name,Date;
+
+<span class="nc" id="L16">    public Reservation_Model(int PH_ID, int CU_ID, int quantity, String Product_Name, String Date) {</span>
+<span class="nc" id="L17">        this.PH_ID = PH_ID;</span>
+<span class="nc" id="L18">        this.CU_ID = CU_ID;</span>
+<span class="nc" id="L19">        this.quantity = quantity;</span>
+<span class="nc" id="L20">        this.Product_Name = Product_Name;</span>
+<span class="nc" id="L21">        this.Date = Date;</span>
+<span class="nc" id="L22">    }</span>
+
+    public String getDate() {
+<span class="nc" id="L25">        return Date;</span>
+    }
+
+    public void setDate(String Date) {
+<span class="nc" id="L29">        this.Date = Date;</span>
+<span class="nc" id="L30">    }</span>
+
+
+    public int getPH_ID() {
+<span class="nc" id="L34">        return PH_ID;</span>
+    }
+
+    public void setPH_ID(int PH_ID) {
+<span class="nc" id="L38">        this.PH_ID = PH_ID;</span>
+<span class="nc" id="L39">    }</span>
+
+    public int getCU_ID() {
+<span class="nc" id="L42">        return CU_ID;</span>
+    }
+
+    public void setCU_ID(int CU_ID) {
+<span class="nc" id="L46">        this.CU_ID = CU_ID;</span>
+<span class="nc" id="L47">    }</span>
+
+    public int getQuantity() {
+<span class="nc" id="L50">        return quantity;</span>
+    }
+
+    public void setQuantity(int quantity) {
+<span class="nc" id="L54">        this.quantity = quantity;</span>
+<span class="nc" id="L55">    }</span>
+
+    public String getProduct_Name() {
+<span class="nc" id="L58">        return Product_Name;</span>
+    }
+
+    public void setProduct_Name(String Product_Name) {
+<span class="nc" id="L62">        this.Product_Name = Product_Name;</span>
+<span class="nc" id="L63">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
